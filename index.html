@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rokade's Chandrabhaga Milk Products | Pure & Traditional</title>
+    <title>Rokade's Chandrabhaga | Pure & Traditional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;600&family=Libre+Baskerville:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --berry: #7B2D5E;
             --berry-dark: #4A1A3A;
             --gold: #E8A820;
             --gold-light: #F5C842;
-            --cream: #FBF5E6;
+            --cream: #FAF9F6;
             --warm-white: #FEFCF7;
         }
 
         body {
             background: var(--cream);
             color: #1A0A12;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
@@ -29,46 +29,34 @@
 
         /* Navigation Styles */
         nav {
-            background: rgba(251, 245, 230, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(123, 45, 94, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(123, 45, 94, 0.08);
             transition: all 0.3s ease;
         }
 
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1.5px;
-            background: var(--gold);
-            transition: width .3s;
+        .nav-link {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--berry-dark);
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
-        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { opacity: 1; color: var(--berry); }
 
-        /* Hero Animations */
-        @keyframes rotate-badge {
-            to { transform: rotate(360deg); }
-        }
-        .animate-rotate {
-            animation: rotate-badge 20s linear infinite;
-        }
-
-        /* Marquee Animation */
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-        .marquee-inner {
-            display: flex;
-            width: max-content;
-            animation: marquee 30s linear infinite;
+        /* Hero Logic */
+        .hero-title {
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
 
-        /* Reveal Logic */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.7s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0.2, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -78,16 +66,16 @@
         /* AI Assistant Custom Styles */
         .ai-card {
             background: linear-gradient(135deg, var(--berry-dark), var(--berry));
-            box-shadow: 0 20px 50px rgba(74, 26, 58, 0.3);
+            box-shadow: 0 30px 60px rgba(74, 26, 58, 0.25);
         }
         .ai-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(232, 168, 32, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            appearance: none;
+            color: white;
         }
         .ai-input:focus {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             border-color: var(--gold);
             outline: none;
         }
@@ -112,39 +100,29 @@
         /* Floating WhatsApp */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: #25D366;
             color: white;
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
             z-index: 100;
             transition: transform 0.3s ease;
         }
-        @media (min-width: 768px) {
-            .whatsapp-float {
-                width: 60px;
-                height: 60px;
-                font-size: 28px;
-                bottom: 30px;
-                right: 30px;
-            }
-        }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Mobile Menu */
         #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
         }
-        #mobile-menu.hidden-menu {
-            transform: translateY(-100%);
-        }
+        #mobile-menu.open { transform: translateX(0); }
 
         .ai-tab.active {
             color: var(--gold);
@@ -152,257 +130,190 @@
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-4 md:px-10 py-3 md:py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-3 md:space-x-4">
-            <img src="chhandrabhaga dery logo.png" alt="Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-gold shadow-sm" onerror="this.src='https://via.placeholder.com/100?text=C'">
+    <nav class="fixed w-full z-50 px-6 md:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <img src="chhandrabhaga dery logo.jpg" alt="Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full border border-gold/30 shadow-sm" onerror="this.src='https://via.placeholder.com/100?text=C'">
             <div class="leading-none">
-                <span class="block font-bold text-berry text-base md:text-lg tracking-tight">Rokade's Chandrabhaga</span>
-                <span class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-berry/70 font-sans">Milk Products</span>
+                <span class="block font-black text-berry text-lg tracking-tight uppercase">Rokade's</span>
+                <span class="text-[9px] uppercase tracking-[0.2em] text-berry/60 font-semibold">Chandrabhaga Dairy</span>
             </div>
         </div>
         
-        <div class="hidden lg:flex space-x-8 font-semibold text-berry/80">
-            <a href="#about" class="nav-link">About Us</a>
+        <div class="hidden lg:flex space-x-12">
+            <a href="#about" class="nav-link">Our Heritage</a>
             <a href="#products" class="nav-link">Products</a>
-            <a href="#ai-assistant" class="nav-link text-berry font-bold italic">AI Assistant ✨</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#ai-assistant" class="nav-link text-berry font-black">AI Assistant</a>
+            <a href="#payment" class="nav-link">Payment</a>
         </div>
         
-        <div class="flex items-center space-x-4">
-            <a href="https://wa.me/917620953031" target="_blank" class="hidden sm:block bg-berry text-gold-light px-4 md:px-6 py-2 rounded-sm font-bold text-[11px] md:text-xs tracking-widest hover:bg-berry-dark transition shadow-md">ORDER NOW</a>
-            <button id="menu-toggle" class="lg:hidden text-berry text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+        <div class="flex items-center space-x-6">
+            <a href="https://wa.me/917620953031" target="_blank" class="hidden sm:block bg-berry text-white px-6 py-2 rounded-sm font-bold text-[10px] tracking-[0.2em] hover:bg-black transition">ORDER NOW</a>
+            <button id="menu-toggle" class="lg:hidden text-berry text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center space-y-8 font-bold text-berry text-2xl hidden-menu lg:hidden">
-        <button id="menu-close" class="absolute top-6 right-6 text-3xl"><i class="fas fa-times"></i></button>
-        <a href="#about" class="mobile-nav-link">About Us</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center space-y-10 font-bold text-berry text-2xl lg:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-3xl"><i class="fas fa-times"></i></button>
+        <a href="#about" class="mobile-nav-link">Our Heritage</a>
         <a href="#products" class="mobile-nav-link">Products</a>
-        <a href="#ai-assistant" class="mobile-nav-link italic">AI Assistant ✨</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
-        <a href="https://wa.me/917620953031" class="bg-berry text-gold-light px-10 py-4 rounded-sm text-sm tracking-[0.2em]">ORDER NOW</a>
+        <a href="#ai-assistant" class="mobile-nav-link">AI Assistant</a>
+        <a href="#payment" class="mobile-nav-link">Payment</a>
+        <a href="https://wa.me/917620953031" class="bg-berry text-white px-10 py-4 rounded-sm text-sm tracking-widest">ORDER NOW</a>
     </div>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center px-6 md:px-20 pt-28 pb-20 relative overflow-hidden">
-        <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full max-w-7xl mx-auto">
-            <div class="text-center lg:text-left order-2 lg:order-1">
-                <span class="inline-block text-gold font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 font-sans">Pure · Traditional · Authentic</span>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-berry-dark leading-[1.1] mb-6">
-                    <em class="font-normal italic">The Purest</em> Dairy <br>
-                    <span class="text-gold text-3xl md:text-5xl">Straight from the Heart</span>
-                </h1>
-                <p class="text-lg md:text-xl text-berry/80 italic mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                    Farm-fresh goodness crafted with traditional methods passed down through generations—pure, wholesome, and full of love.
-                </p>
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#products" class="bg-berry text-gold-pale px-6 md:px-8 py-3 md:py-4 rounded-sm font-bold tracking-widest text-[10px] hover:translate-y-[-2px] transition shadow-xl">EXPLORE RANGE</a>
-                    <a href="#contact" class="border border-berry text-berry px-6 md:px-8 py-3 md:py-4 rounded-sm font-bold tracking-widest text-[10px] hover:bg-berry hover:text-white transition">TALK TO US</a>
-                </div>
+    <section class="min-h-screen flex items-center justify-center px-6 text-center bg-white relative overflow-hidden pt-20">
+        <div class="max-w-4xl mx-auto reveal">
+            <span class="inline-block text-gold font-bold tracking-[0.4em] uppercase text-[10px] mb-6">Pure · Traditional · Authentic</span>
+            <h1 class="text-5xl md:text-8xl font-black text-berry-dark mb-8 hero-title">
+                The <em class="italic font-normal">Purest</em> Dairy <br>
+                <span class="text-gold">Nature Provides.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-400 italic mb-12 max-w-2xl mx-auto leading-relaxed">
+                Farm-fresh goodness crafted with time-honored methods. No shortcuts, just absolute purity from our family to yours.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#products" class="bg-berry text-white px-10 py-5 rounded-sm font-bold tracking-widest text-xs hover:bg-black transition shadow-lg">EXPLORE RANGE</a>
+                <a href="#contact" class="border border-gray-200 text-gray-500 px-10 py-5 rounded-sm font-bold tracking-widest text-xs hover:border-berry hover:text-berry transition">VISIT US</a>
             </div>
-            <div class="relative flex justify-center order-1 lg:order-2 mb-8 lg:mb-0">
-                <div class="relative w-full max-w-xs md:max-w-md">
-                    <img src="PHOTO-2025-12-26-17-18-58 3.jpg" alt="Pure Cow Ghee" class="rounded-sm shadow-2xl relative z-10 w-full" onerror="this.src='https://via.placeholder.com/400x500?text=Ghee'">
-                    <div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 bg-gold rounded-full flex items-center justify-center shadow-xl animate-rotate z-20">
-                        <div class="text-center text-berry-dark leading-none">
-                            <span class="block font-black text-lg md:text-xl">PURE</span>
-                            <span class="text-[7px] md:text-[8px] uppercase font-bold tracking-tighter">Guaranteed</span>
+        </div>
+        <!-- Minimal Decor -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.5em] uppercase text-gray-200 font-bold">
+            Mhasoba Gate, Karjat
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-20 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold text-berry-dark mb-8 leading-tight">Crafted with <br><em class="italic font-normal text-berry">Tradition</em></h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-10">
+                        Named after the sacred Chandrabhaga river, our brand is a testament to the soul of rural Maharashtra. Every product we make reflects our commitment to bilona methods and all-natural sourcing.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <span class="block text-berry font-bold text-sm mb-2 uppercase tracking-widest">🐄 Farm Fresh</span>
+                            <p class="text-xs text-gray-400">Direct from local cow herds daily.</p>
+                        </div>
+                        <div>
+                            <span class="block text-berry font-bold text-sm mb-2 uppercase tracking-widest">🌿 No Additives</span>
+                            <p class="text-xs text-gray-400">Pure dairy, zero preservatives.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Marquee Strip -->
-    <div class="bg-berry py-3 md:py-4 overflow-hidden border-y border-gold/20">
-        <div class="marquee-inner">
-            <span class="flex items-center space-x-3 px-6 md:px-8 text-gold-light text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                <i class="fas fa-circle text-[6px]"></i> <span>Pure Cow Ghee</span>
-            </span>
-            <span class="flex items-center space-x-3 px-6 md:px-8 text-gold-light text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                <i class="fas fa-circle text-[6px]"></i> <span>Special Basundi</span>
-            </span>
-            <span class="flex items-center space-x-3 px-6 md:px-8 text-gold-light text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                <i class="fas fa-circle text-[6px]"></i> <span>Fresh Paneer</span>
-            </span>
-            <span class="flex items-center space-x-3 px-6 md:px-8 text-gold-light text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                <i class="fas fa-circle text-[6px]"></i> <span>Malai Pedha</span>
-            </span>
-            <span class="flex items-center space-x-3 px-6 md:px-8 text-gold-light text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
-                <i class="fas fa-circle text-[6px]"></i> <span>Pure Cow Ghee</span>
-            </span>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 md:py-24 px-6 md:px-20 bg-warm-white">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
-            <div class="reveal">
-                <span class="text-gold font-bold tracking-widest text-xs uppercase mb-2 block text-center lg:text-left">Our Story</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-berry-dark mb-6 md:mb-8 leading-tight text-center lg:text-left">Crafted with <br><em class="italic font-normal text-berry">Tradition</em> & Care</h2>
-                <p class="text-base md:text-lg text-gray-700 leading-relaxed mb-6 text-center lg:text-left">
-                    Named after the sacred Chandrabhaga river, our brand is a testament to purity. We believe the best dairy comes from natural, time-honoured processes. 
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-10">
-                    <div class="p-4 bg-cream border-l-2 border-gold">
-                        <span class="block text-berry font-bold mb-1">🐄 Farm Fresh</span>
-                        <p class="text-xs text-gray-500">Sourced daily from local cows.</p>
-                    </div>
-                    <div class="p-4 bg-cream border-l-2 border-gold">
-                        <span class="block text-berry font-bold mb-1">🌿 All Natural</span>
-                        <p class="text-xs text-gray-500">Zero preservatives or additives.</p>
+                <div class="reveal flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <img src="PHOTO-2025-12-26-17-18-58 2.jpg" alt="Dairy Quality" class="w-full h-auto rounded-sm shadow-2xl grayscale hover:grayscale-0 transition duration-700">
                     </div>
                 </div>
             </div>
-            <div class="relative reveal mt-12 lg:mt-0">
-                <div class="relative aspect-[4/5] w-full max-w-sm mx-auto lg:ml-auto">
-                    <img src="PHOTO-2025-12-26-17-18-58 2.jpg" class="w-4/5 rounded-sm shadow-xl absolute top-0 right-0 z-10" alt="Ghee Jars">
-                    <img src="PHOTO-2025-12-26-17-18-59.jpg" class="w-3/5 rounded-sm shadow-lg absolute bottom-0 left-0 z-20 border-[6px] md:border-8 border-warm-white" alt="Basundi Tubs">
+        </div>
+    </section>
+
+    <!-- Products Gallery -->
+    <section id="products" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="text-gold font-bold tracking-widest text-[10px] uppercase mb-4 block">Our Signature Gallery</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-berry-dark">Finest Dairy Products</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center border-b border-gray-100 pb-20 mb-20 reveal">
+                <div class="flex justify-center">
+                    <img src="PHOTO-2025-12-26-17-18-58 3.jpg" class="max-h-[500px] w-auto rounded-sm shadow-xl" alt="Pure Cow Ghee">
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-3xl md:text-4xl font-bold text-berry-dark mb-4">Pure Cow Ghee</h3>
+                    <p class="text-gray-500 italic mb-8 max-w-md">Granular, aromatic, and rich in nutrients. Our slow-churned ghee is the heart of every Indian home.</p>
+                    <a href="https://wa.me/917620953031" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b-2 border-berry pb-2 hover:text-berry transition">Request Pricing</a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center reveal">
+                <div class="text-center md:text-right order-2 md:order-1">
+                    <h3 class="text-3xl md:text-4xl font-bold text-berry-dark mb-4">Special Basundi</h3>
+                    <p class="text-gray-500 italic mb-8 max-w-md md:ml-auto">Thickened cream with saffron and cardamom. Traditionally reduced to perfection.</p>
+                    <a href="https://wa.me/917620953031" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b-2 border-berry pb-2 hover:text-berry transition">Request Pricing</a>
+                </div>
+                <div class="flex justify-center order-1 md:order-2">
+                    <img src="PHOTO-2025-12-26-17-18-58.jpg" class="max-h-[500px] w-auto rounded-sm shadow-xl" alt="Basundi">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="py-20 md:py-24 px-6 bg-cream">
-        <div class="text-center mb-12 md:mb-16 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold text-berry-dark mb-4 tracking-tight">Finest <em class="italic font-normal">Dairy Products</em></h2>
-            <p class="text-berry/60 italic max-w-xl mx-auto text-sm md:text-base">From golden ghee to creamy basundi—every product is a celebration of pure dairy craftsmanship.</p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-            <!-- Ghee -->
-            <div class="bg-white p-5 md:p-6 shadow-md hover:shadow-xl transition group reveal">
-                <div class="relative overflow-hidden mb-6 aspect-square bg-cream flex items-center justify-center">
-                    <img src="PHOTO-2025-12-26-17-18-58 3.jpg" alt="Ghee" class="group-hover:scale-105 transition duration-500 w-full h-full object-cover">
-                    <span class="absolute top-3 right-3 bg-gold text-berry-dark px-2 py-1 text-[9px] font-bold uppercase tracking-widest">Best Seller</span>
-                </div>
-                <h3 class="text-xl md:text-2xl font-bold text-berry-dark mb-2">Pure Cow Ghee</h3>
-                <p class="text-xs md:text-sm text-gray-600 italic mb-4">Aromatic, granular, and slow-churned for that authentic home taste.</p>
-                <button onclick="window.location.href='https://wa.me/917620953031?text=Hi, I want to order Pure Cow Ghee'" class="w-full py-3 bg-berry text-gold-pale font-bold tracking-widest text-[9px] md:text-[10px]">ORDER ON WHATSAPP</button>
-            </div>
-
-            <!-- Basundi -->
-            <div class="bg-white p-5 md:p-6 shadow-md hover:shadow-xl transition group reveal">
-                <div class="relative overflow-hidden mb-6 aspect-square bg-cream flex items-center justify-center">
-                    <img src="PHOTO-2025-12-26-17-18-58.jpg" alt="Basundi" class="group-hover:scale-105 transition duration-500 w-full h-full object-cover">
-                    <span class="absolute top-3 right-3 bg-gold text-berry-dark px-2 py-1 text-[9px] font-bold uppercase tracking-widest">Popular</span>
-                </div>
-                <h3 class="text-xl md:text-2xl font-bold text-berry-dark mb-2">Special Basundi</h3>
-                <p class="text-xs md:text-sm text-gray-600 italic mb-4">Thick, sweetened reduced milk with saffron & cardamom. Pure indulgence.</p>
-                <button onclick="window.location.href='https://wa.me/917620953031?text=Hi, I want to order Special Basundi'" class="w-full py-3 bg-berry text-gold-pale font-bold tracking-widest text-[9px] md:text-[10px]">ORDER ON WHATSAPP</button>
-            </div>
-
-            <!-- Paneer -->
-            <div class="bg-white p-5 md:p-6 shadow-md hover:shadow-xl transition group reveal">
-                <div class="relative overflow-hidden mb-6 aspect-square bg-cream flex items-center justify-center">
-                    <span class="text-6xl md:text-7xl opacity-80 group-hover:scale-110 transition">🧀</span>
-                </div>
-                <h3 class="text-xl md:text-2xl font-bold text-berry-dark mb-2">Fresh Paneer</h3>
-                <p class="text-xs md:text-sm text-gray-600 italic mb-4">Soft, cottage cheese made daily. Firm, flavorful, and 100% natural.</p>
-                <button onclick="window.location.href='https://wa.me/917620953031?text=Hi, I want to order Fresh Paneer'" class="w-full py-3 bg-berry text-gold-pale font-bold tracking-widest text-[9px] md:text-[10px]">ORDER ON WHATSAPP</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI ASSISTANT SECTION ✨ -->
-    <section id="ai-assistant" class="py-20 md:py-24 px-4 md:px-6 bg-warm-white relative overflow-hidden">
-        <div class="max-w-4xl mx-auto ai-card rounded-sm p-6 md:p-12 text-white relative">
-            
-            <!-- AI Tabs -->
-            <div class="flex justify-center space-x-8 mb-10 border-b border-white/10 text-xs md:text-sm tracking-widest uppercase font-bold">
+    <!-- AI Assistant -->
+    <section id="ai-assistant" class="py-24 px-6 bg-cream relative">
+        <div class="max-w-4xl mx-auto ai-card rounded-sm p-8 md:p-12 text-white reveal">
+            <div class="flex justify-center space-x-12 mb-12 border-b border-white/10 text-[10px] tracking-widest uppercase font-bold">
                 <button id="tab-kitchen" onclick="switchAITab('kitchen')" class="ai-tab active pb-4 transition">Kitchen Expert</button>
-                <button id="tab-planner" onclick="switchAITab('planner')" class="ai-tab pb-4 transition">Festive Planner ✨</button>
+                <button id="tab-planner" onclick="switchAITab('planner')" class="ai-tab pb-4 transition">Festive Planner</button>
             </div>
 
             <div class="text-center mb-10">
-                <h2 id="ai-title" class="text-2xl md:text-4xl font-bold mb-3">AI Kitchen Expert ✨</h2>
-                <p id="ai-subtitle" class="text-gold italic text-base md:text-lg">"Consult me for traditional recipes and health facts."</p>
+                <h2 id="ai-title" class="text-3xl font-bold mb-3">AI Kitchen Expert</h2>
+                <p id="ai-subtitle" class="text-gold italic">"Ask me about our bilona process or traditional recipes."</p>
             </div>
 
-            <div id="ai-suggestions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"></div>
+            <div id="ai-suggestions" class="grid sm:grid-cols-2 gap-4 mb-8"></div>
 
             <div class="relative">
-                <textarea id="ai-input" placeholder="Type your request here..." class="ai-input w-full rounded-sm p-5 md:p-6 text-white text-sm md:text-base h-32 md:h-40 resize-none placeholder-white/30"></textarea>
-                <button id="send-btn" onclick="askAI()" class="absolute bottom-4 right-4 bg-gold text-berry-dark px-5 py-2 rounded-sm font-bold text-[9px] md:text-[10px] tracking-widest hover:bg-gold-light transition shadow-lg flex items-center">
+                <textarea id="ai-input" placeholder="Type your query..." class="ai-input w-full rounded-sm p-6 text-sm h-32 md:h-40 resize-none"></textarea>
+                <button id="send-btn" onclick="askAI()" class="absolute bottom-4 right-4 bg-gold text-berry-dark px-6 py-2 rounded-sm font-bold text-[10px] tracking-widest hover:bg-gold-light transition">
                     <span id="btn-text">GENERATE ✨</span>
                     <div id="btn-loader" class="loader hidden ml-2"></div>
                 </button>
             </div>
 
-            <div id="ai-response-area" class="mt-6 border-t border-white/10">
-                <div class="py-6 md:py-8">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-6 h-6 bg-gold rounded-full flex items-center justify-center text-[10px] text-berry-dark font-black">C</div>
-                        <span id="ai-bot-label" class="text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase text-gold">Chandrabhaga Kitchen AI</span>
-                    </div>
-                    <div id="ai-response-text" class="italic text-base md:text-lg text-white/90 leading-relaxed whitespace-pre-wrap"></div>
-                </div>
+            <div id="ai-response-area" class="mt-8 border-t border-white/10 pt-8">
+                <div id="ai-response-text" class="italic text-lg text-white/90 leading-relaxed whitespace-pre-wrap"></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Payment Section -->
-    <section id="contact" class="py-20 md:py-24 px-6 bg-cream">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
-            <!-- Contact Card -->
+    <!-- Payment & Contact -->
+    <section id="payment" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
             <div class="reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-berry-dark mb-6 tracking-tight">Visit Our Outlet</h2>
-                <p class="text-lg text-berry/70 italic mb-10 leading-relaxed">Experience the purity firsthand at our production center.</p>
-                <div class="space-y-8">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-berry text-gold-light w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                <h2 class="text-4xl font-bold text-berry-dark mb-12">Visit Our Outlet</h2>
+                <div class="space-y-12">
+                    <div class="flex items-start space-x-6">
+                        <div class="text-berry text-2xl"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
-                            <span class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Our Address</span>
-                            <p class="text-berry font-bold text-lg leading-relaxed">tak rr Mhasoba gate, Karjat - 414402</p>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Our Production Center</span>
+                            <p class="text-lg font-bold">tak rr Mhasoba gate, Karjat - 414402</p>
                         </div>
                     </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-berry text-gold-light w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-phone-alt"></i></div>
+                    <div class="flex items-start space-x-6">
+                        <div class="text-berry text-2xl"><i class="fas fa-phone-alt"></i></div>
                         <div>
-                            <span class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Call / WhatsApp</span>
-                            <p class="text-berry font-bold text-lg">+91 76209 53031</p>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Connect With Us</span>
+                            <p class="text-lg font-bold">+91 76209 53031</p>
                         </div>
                     </div>
-                </div>
-                <div class="mt-12 flex space-x-6">
-                    <a href="https://www.instagram.com/rokades_milk_products?igsh=MTdlZDdyMWZudjJpaA==" target="_blank" class="w-12 h-12 border border-berry/20 rounded-full flex items-center justify-center text-berry hover:bg-berry hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=RokadeChandrabhaga" target="_blank" class="w-12 h-12 border border-berry/20 rounded-full flex items-center justify-center text-berry hover:bg-berry hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <div class="flex space-x-8 pt-4">
+                        <a href="https://www.instagram.com/rokades_milk_products?igsh=MTdlZDdyMWZudjJpaA==" target="_blank" class="text-gray-400 hover:text-berry text-2xl transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=RokadeChandrabhaga" target="_blank" class="text-gray-400 hover:text-berry text-2xl transition"><i class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Payment Card -->
-            <div class="bg-white p-8 md:p-10 shadow-2xl rounded-sm border-t-4 border-berry reveal">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-berry-dark">Secure Payment</h3>
-                        <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mt-1">Direct Bank Transfer / UPI</p>
-                    </div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo.png/640px-UPI-Logo.png" class="h-6 opacity-40 grayscale" alt="UPI">
-                </div>
-                
-                <div class="flex flex-col items-center">
-                    <div class="bg-cream p-4 mb-6 rounded-md w-full max-w-[240px] shadow-inner text-center">
-                        <img src="image_bad85c.jpg" class="w-full h-auto rounded-sm" alt="Payment QR Code">
-                        <span class="block text-[10px] uppercase font-bold tracking-widest text-berry/50 mt-2">Scan to Pay</span>
-                    </div>
-                    
-                    <div class="w-full space-y-4">
-                        <div class="p-4 bg-gray-50 border border-gray-100 rounded-sm">
-                            <span class="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">UPI ID</span>
-                            <div class="flex justify-between items-center">
-                                <span class="text-berry font-black tracking-tight text-base">7620953031-2@ybl</span>
-                                <button onclick="navigator.clipboard.writeText('7620953031-2@ybl')" class="text-gold text-xs font-bold hover:underline">COPY</button>
-                            </div>
+            <div class="reveal">
+                <div class="bg-cream p-10 rounded-sm border-t-8 border-berry flex flex-col items-center">
+                    <h3 class="text-xl font-bold mb-8 uppercase tracking-widest text-berry">Scan to Pay</h3>
+                    <img src="image_bad85c.jpg" class="w-full max-w-[280px] rounded-sm shadow-xl mb-8" alt="UPI QR">
+                    <div class="w-full bg-white p-4 text-center border border-gray-100">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2 block">UPI ID</span>
+                        <div class="flex items-center justify-center space-x-4">
+                            <span class="text-berry font-black tracking-tight">7620953031-2@ybl</span>
+                            <button onclick="navigator.clipboard.writeText('7620953031-2@ybl')" class="text-gold text-xs font-bold uppercase">Copy</button>
                         </div>
-                        <p class="text-[11px] text-gray-400 italic text-center">Please share the transaction screenshot on WhatsApp after payment.</p>
                     </div>
                 </div>
             </div>
@@ -410,28 +321,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-berry-dark text-gold-pale/60 py-16 md:py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gold/10 pb-16">
-            <div class="sm:col-span-2">
-                <div class="flex items-center space-x-4 mb-6">
-                    <img src="chhandrabhaga dery logo.jpg" class="h-12 w-12 md:h-14 md:w-14 rounded-full border border-gold/30" alt="Logo">
-                    <span class="text-xl md:text-2xl font-bold text-gold-light">Rokade's Chandrabhaga</span>
-                </div>
-                <p class="text-lg md:text-xl italic mb-6 leading-relaxed max-w-md">"Pure HI Sure HI" — Bringing the richness of tradition and farm-fresh purity to your table.</p>
-            </div>
-            <div>
-                <h4 class="text-gold font-bold tracking-widest text-[10px] uppercase mb-6">Our Location</h4>
-                <p class="text-xs md:text-sm italic leading-loose">tak rr Mhasoba gate, Karjat,<br>Dist. Ahmednagar, MH - 414402.<br><br><span class="block text-gold-light font-bold not-italic">+91 76209 53031</span></p>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto py-8 flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-bold opacity-40 text-center gap-4">
+    <footer class="bg-berry-dark py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] font-bold tracking-[0.4em] uppercase text-gold-pale/30 text-center gap-6">
             <span>© 2025 Chandrabhaga Milk Products</span>
-            <span>MADE WITH PRIDE IN MAHARASHTRA</span>
+            <div class="flex items-center space-x-4">
+                <img src="chhandrabhaga dery logo.jpg" class="h-8 w-8 rounded-full opacity-30 grayscale" alt="Footer Logo">
+                <span>Made in Maharashtra</span>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917620953031" class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/917620953031" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
         const apiKey = "";
@@ -439,48 +340,30 @@
 
         const suggestions = {
             kitchen: [
-                { label: 'Recipe Idea', text: 'Suggest a sweet recipe using Ghee for a Sunday breakfast.' },
-                { label: 'Health Fact', text: 'What are the nutritional benefits of A2 Cow Ghee?' }
+                { label: 'Recipe', text: 'Traditional Ghee Ladoo recipe using Chandrabhaga Ghee.' },
+                { label: 'Process', text: 'Explain the bilona method for pure cow ghee.' }
             ],
             planner: [
-                { label: 'Festival Menu', text: 'Plan a Ganesh Chaturthi menu for 10 people featuring Basundi and Paneer.' },
-                { label: 'Party Idea', text: 'Suggest a healthy dairy-themed snack menu for a small family gathering.' }
+                { label: 'Ganesh Festival', text: 'Suggest a menu for Ganesh Chaturthi for 12 people.' },
+                { label: 'Party Menu', text: 'Plan a healthy dairy snack menu for a small gathering.' }
             ]
         };
 
         function switchAITab(tab) {
             currentAITab = tab;
-            const kitchenTab = document.getElementById('tab-kitchen');
-            const plannerTab = document.getElementById('tab-planner');
-            const aiTitle = document.getElementById('ai-title');
-            const aiSubtitle = document.getElementById('ai-subtitle');
-            const aiBotLabel = document.getElementById('ai-bot-label');
-            const aiInput = document.getElementById('ai-input');
-
-            if (tab === 'kitchen') {
-                kitchenTab.classList.add('active');
-                plannerTab.classList.remove('active');
-                aiTitle.innerText = "AI Kitchen Expert ✨";
-                aiSubtitle.innerText = '"Consult me for traditional recipes and health facts."';
-                aiBotLabel.innerText = "Chandrabhaga Kitchen AI";
-                aiInput.placeholder = "How can I cook something delicious with Ghee?";
-            } else {
-                plannerTab.classList.add('active');
-                kitchenTab.classList.remove('active');
-                aiTitle.innerText = "Festive Menu Planner ✨";
-                aiSubtitle.innerText = '"Let me plan the perfect dairy-rich menu for your guests."';
-                aiBotLabel.innerText = "Chandrabhaga Event AI";
-                aiInput.placeholder = "Plan a menu for Diwali for 15 guests...";
-            }
+            document.getElementById('tab-kitchen').classList.toggle('active', tab === 'kitchen');
+            document.getElementById('tab-planner').classList.toggle('active', tab === 'planner');
+            document.getElementById('ai-title').innerText = tab === 'kitchen' ? "AI Kitchen Expert" : "Festive Planner";
+            document.getElementById('ai-subtitle').innerText = tab === 'kitchen' ? '"Ask about our bilona process or traditional recipes."' : '"Plan a dairy-rich menu for your special occasion."';
             renderSuggestions();
         }
 
         function renderSuggestions() {
             const container = document.getElementById('ai-suggestions');
             container.innerHTML = suggestions[currentAITab].map(s => `
-                <button onclick="askAI('${s.text}')" class="bg-white/5 hover:bg-white/10 p-4 rounded-sm text-left border border-white/10 transition group">
-                    <span class="block font-bold text-gold text-[10px] tracking-widest uppercase mb-1">${s.label}</span>
-                    <span class="text-xs md:text-sm opacity-60 italic">"${s.text.substring(0, 40)}..."</span>
+                <button onclick="askAI('${s.text}')" class="bg-white/5 hover:bg-white/10 p-5 rounded-sm text-left border border-white/5 transition text-xs opacity-80">
+                    <span class="block font-bold text-gold uppercase tracking-widest mb-1 text-[9px]">${s.label}</span>
+                    "${s.text}"
                 </button>
             `).join('');
         }
@@ -496,70 +379,66 @@
             const btnLoader = document.getElementById('btn-loader');
             const sendBtn = document.getElementById('send-btn');
 
-            responseText.innerHTML = currentAITab === 'kitchen' ? "Consulting our dairy experts..." : "Planning your festive menu...";
+            responseText.innerHTML = "Thinking...";
             responseArea.classList.add('open');
             btnText.classList.add('hidden');
             btnLoader.classList.remove('hidden');
             sendBtn.disabled = true;
 
-            const systemPrompts = {
-                kitchen: `You are the Traditional Culinary Expert for Rokade's Chandrabhaga Milk Products. Products: Pure Cow Ghee, Special Basundi, Fresh Paneer. Focus on health benefits and heritage recipes. Speak warmly.`,
-                planner: `You are a Festive Hospitality Consultant for Rokade's Chandrabhaga Milk Products. Suggest a complete menu using Chandrabhaga products.`
-            };
+            const systemPrompt = `You are the Traditional Culinary Expert for Rokade's Chandrabhaga Milk Products. 
+            Products: Pure Cow Ghee, Special Basundi. Location: Mhasoba Gate, Karjat. 
+            Tone: Warm, expert, rural Maharashtrian heritage. 
+            Emphasize bilona process and purity ("Pure HI Sure HI"). Keep responses under 150 words.`;
 
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemPrompts[currentAITab] }] }
-            };
-
-            const fetchWithRetry = async (retries = 0) => {
-                try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!response.ok) throw new Error('API Error');
-                    const result = await response.json();
-                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (text) typeWriter(text);
-                } catch (error) {
-                    if (retries < 5) setTimeout(() => fetchWithRetry(retries + 1), Math.pow(2, retries) * 1000);
-                    else { responseText.innerHTML = "Expert busy. Try again soon."; resetUI(); }
-                }
-            };
-
-            function typeWriter(text) {
-                responseText.innerHTML = "";
-                let i = 0;
-                function type() {
-                    if (i < text.length) {
-                        responseText.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
-                        i++;
-                        setTimeout(type, 10);
-                    } else {
-                        resetUI();
-                        if (window.innerWidth < 768) responseArea.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                    }
-                }
-                type();
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } })
+                });
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Expert is busy, please WhatsApp us!";
+                typeWriter(text);
+            } catch (error) {
+                responseText.innerHTML = "Connection busy. Please WhatsApp us at +91 76209 53031!";
+                resetUI();
             }
-            function resetUI() { btnText.classList.remove('hidden'); btnLoader.classList.add('hidden'); sendBtn.disabled = false; }
-            fetchWithRetry();
         }
 
+        function typeWriter(text) {
+            const responseText = document.getElementById('ai-response-text');
+            responseText.innerHTML = "";
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    responseText.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+                    i++;
+                    setTimeout(type, 10);
+                } else {
+                    resetUI();
+                }
+            }
+            type();
+        }
+
+        function resetUI() {
+            document.getElementById('btn-text').classList.remove('hidden');
+            document.getElementById('btn-loader').classList.add('hidden');
+            document.getElementById('send-btn').disabled = false;
+        }
+
+        // Mobile Menu
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => mobileMenu.classList.remove('hidden-menu'));
-        menuClose.addEventListener('click', () => mobileMenu.classList.add('hidden-menu'));
+        menuToggle.onclick = () => mobileMenu.classList.add('open');
+        menuClose.onclick = () => mobileMenu.classList.remove('open');
+        document.querySelectorAll('.mobile-nav-link').forEach(l => l.onclick = () => mobileMenu.classList.remove('open'));
 
+        // Scroll Reveal
         function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) el.classList.add("active");
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
             });
         }
         window.addEventListener("scroll", reveal);
